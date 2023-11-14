@@ -24,21 +24,25 @@ function App() {
   };
 
   return (
-    <>
-      <SearchInput
-        updateSearchTerm={updateSearchTerm}
-        fetchPlayerData={handleFetchPlayerData}
-      />
-      <div className="player-search-results">
-        {playerData === null ? (
-          'Enter a search term and click Search.'
-        ) : playerData.error ? (
-          playerData.error
-        ) : (
-          <PlayerCard player={playerData} />
-        )}
+    <div className='container'>
+      <div className="col-3">
+        <SearchInput
+          updateSearchTerm={updateSearchTerm}
+          fetchPlayerData={handleFetchPlayerData}
+        />
       </div>
-    </>
+      <div className="col-7">
+        <div className="player-search-results">
+          {playerData === null ? (
+            'Enter a search term and click Search.'
+          ) : playerData.error ? (
+            playerData.error
+          ) : (
+            <PlayerCard player={playerData} />
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
