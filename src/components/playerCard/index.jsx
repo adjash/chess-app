@@ -1,7 +1,8 @@
 // PlayerCard.js
 import React from 'react';
+import PlayerStats from '../playerStats';
 
-function PlayerCard({ player }) {
+function PlayerCard({ player, stats }) {
   return (
     <div>
       <img src={player.avatar} alt="" />
@@ -10,6 +11,7 @@ function PlayerCard({ player }) {
         <a href={player.twitch_url}>twitch</a> :
         ''
       }
+      <PlayerStats stats={stats}/>
     </div>
   );
 }

@@ -3,11 +3,13 @@ import './App.css';
 import PlayerCard from './components/playerCard';
 import SearchInput from './components/search';
 import fetchPlayerData from './utils/fetchPlayerData';
+import fetchPlayerStats from './utils/fetchPlayerStats';
 
 
 function App() {
   const [searchInput, setSearchInput] = useState('');
   const [playerData, setPlayerData] = useState(null);
+  const [playerStats, setPlayerStats] = useState(null);
 
   const updateSearchTerm = (e) => {
     setSearchInput(e.target.value);
@@ -17,7 +19,9 @@ function App() {
     try {
       setPlayerData(null);
       const data = await fetchPlayerData(searchInput);
-      setPlayerData(data);
+      const stats = await fetchPlayerStats(searchInput);
+      await setPlayerData(data);
+      await setPlayerStats(stats)
     } catch (error) {
       console.error(error);
     }
@@ -38,7 +42,7 @@ function App() {
           ) : playerData.error ? (
             playerData.error
           ) : (
-            <PlayerCard player={playerData} />
+            <PlayerCard player={playerData} stats={playerStats} />
           )}
         </div>
       </div>
