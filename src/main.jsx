@@ -20,7 +20,7 @@ const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/chess-app",
     element: <Root />,
     errorElement: <ErrorPage/>
   },
